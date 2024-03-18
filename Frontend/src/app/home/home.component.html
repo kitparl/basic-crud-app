@@ -1,0 +1,152 @@
+<div class="container">
+    <div class="text-right">
+        <button type="submit" class="btn btn-primary" (click)="onNew()">
+          New Person
+        </button>
+      </div>
+      <br>
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+
+          <th>Name</th>
+
+          <th>Gender</th>
+
+          <th>DOB</th>
+
+          <th>Mobile</th>
+
+
+          <th></th>
+
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let person of persons; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+
+          <td>{{ person.name }}</td>
+
+          <td>{{ person.gender }}</td>
+
+          <td>
+            {{
+              (person.dob.day | number:'2.0') +
+              "/" +
+              (person.dob.month | number:'2.0') +
+              "/" +
+              person.dob.year
+            }}
+          </td>
+          
+
+          <td>{{ person.mobile }}</td>
+
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(i,person.id)">
+              Edit
+            </button>
+          </td>
+
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDelete(person.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- <div class="text-right">
+      <button type="submit" class="btn btn-primary" (click)="onNew()">
+        New
+      </button>
+    </div> -->
+  </div>
+  <div class="regentry" *ngIf="showNew">
+    <form (ngSubmit)="onSave()">
+      <div class="form-group row">
+        <label for="name-input" class="col-2 col-form-label"
+          >Name</label
+        >
+
+        <div class="col-10">
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="regModel.name"
+            name="name"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-gender-input" class="col-2 col-form-label">Gender</label>
+      
+        <div class="col-10">
+          <select class="form-control" [(ngModel)]="regModel.gender" name="gender">
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+            <option value="OTHER">Other</option>
+          </select>
+        </div>
+      </div>
+      
+
+      <div class="form-group row">
+        <label for="dob-input" class="col-2 col-form-label">DOB</label>
+
+        <div class="col-3 input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dob"
+            [(ngModel)]="regModel.dob"
+            ngbDatepicker
+            #dob="ngbDatepicker"
+          />
+
+          <button
+            class="input-group-addon"
+            (click)="dob.toggle()"
+            type="button"
+          >
+            <img
+              src="assets/img/calendar-icon.svg"
+              style="width: 1.2rem; height: 1rem; cursor: pointer;"
+            />
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-mobile-input" class="col-2 col-form-label">Mobile</label>
+
+        <div class="col-10">
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="regModel.mobile"
+            name="mobile"/>
+        </div>
+      </div>
+
+
+
+
+      <button type="submit" class="btn btn-success">{{ submitType }}</button>
+
+      <button type="submit" class="btn btn-primary" (click)="onCancel()">
+        Cancel
+      </button>
+    </form>
+  </div>
+
+  <br />
+</div>
