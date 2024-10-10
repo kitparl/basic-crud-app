@@ -1,6 +1,8 @@
 # SampleCrud
 
-This project is updated to [Angular CLI](https://github.com/angular/angular-cli) version 8. This app is simple angular CRUD app which is meant for getting started project. This project can be extended to accomodate any enterprise based features.
+This project is built on [Angular CLI](https://github.com/angular/angular-cli) version 8, Nodejs (backend), MySql(db). This app is simple angular CRUD app which is meant for getting started project. This project can be extended to accomodate any enterprise based features.
+
+> This project is part of a self-learning initiative aimed at enhancing my skills in Nodejs, MySQL and Angular.
 
 ## Follow below steps
 
